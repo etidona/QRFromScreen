@@ -1,0 +1,17 @@
+[package]
+name = "qr-from-screen"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Scan the QR codes shown on your screen and act on them"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/etidona/qr-from-screen"
+keywords = ["qr", "gtk", "wayland", "screenshot"]
+categories = ["gui"]
+
+[dependencies]
+adw = { version = "0.9.2", package = "libadwaita", features = ["v1_6"] }
+ashpd = { version = "0.14.0", default-features = false, features = ["async-io", "screenshot"] }
+gtk = { version = "0.11.5", package = "gtk4", features = ["v4_10"] }
+image = { version = "0.25.10", default-features = false, features = ["png"] }
+rqrr = "0.11.0"

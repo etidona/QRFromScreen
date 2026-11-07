@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=QR from Screen
+Comment=Scan and open QR codes shown on your screen
+Exec=qr-from-screen
+Icon=io.github.etidona.QRFromScreen
+Terminal=false
+Categories=Utility;
+Keywords=QR;QR code;barcode;scan;scanner;screen;screenshot;Wi-Fi;link;
+StartupNotify=false
