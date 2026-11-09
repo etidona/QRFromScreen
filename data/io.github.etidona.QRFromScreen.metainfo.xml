@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 etidona -->
+<component type="desktop-application">
+  <id>io.github.etidona.QRFromScreen</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>QR from Screen</name>
+  <summary>Scan and open QR codes on your screen</summary>
+  <developer id="io.github.etidona">
+    <name>etidona</name>
+  </developer>
+
+  <description>
+    <p>
+      QR from Screen reads the QR codes shown on your screen and asks what to do
+      with them, like the QR reader of a phone. Run it from a keyboard shortcut:
+      it takes a screenshot, finds the codes and shows a single dialog.
+    </p>
+    <ul>
+      <li>Open web links in your browser</li>
+      <li>Connect to Wi-Fi networks</li>
+      <li>Write emails in your mail app</li>
+      <li>Copy any other text</li>
+    </ul>
+    <p>
+      Nothing happens without your confirmation. Links show the real site they
+      open, Wi-Fi networks you have already saved are never changed, and the
+      screenshot is deleted at once.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">io.github.etidona.QRFromScreen.desktop</launchable>
+  <provides>
+    <binary>qr-from-screen</binary>
+  </provides>
+
+  <url type="homepage">https://github.com/etidona/QRFromScreen</url>
+  <url type="bugtracker">https://github.com/etidona/QRFromScreen/issues</url>
+  <url type="vcs-browser">https://github.com/etidona/QRFromScreen</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/etidona/QRFromScreen/main/data/screenshots/open-link.png</image>
+      <caption>Confirm before opening a link found in a QR code</caption>
+    </screenshot>
+  </screenshots>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#99c1f1</color>
+    <color type="primary" scheme_preference="dark">#1a5fb4</color>
+  </branding>
+
+  <content_rating type="oars-1.1"/>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+
+  <releases>
+    <release version="0.1.0" date="2026-11-07">
+      <description>
+        <p>First release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

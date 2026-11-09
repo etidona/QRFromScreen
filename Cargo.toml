@@ -5,7 +5,7 @@ edition = "2024"
 rust-version = "1.85"
 description = "Scan the QR codes shown on your screen and act on them"
 license = "GPL-3.0-or-later"
-repository = "https://github.com/etidona/qr-from-screen"
+repository = "https://github.com/etidona/QRFromScreen"
 keywords = ["qr", "gtk", "wayland", "screenshot"]
 categories = ["gui"]
 

@@ -1,0 +1,48 @@
+{
+    "id": "io.github.etidona.QRFromScreen",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "51",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command": "qr-from-screen",
+    "finish-args": [
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--share=ipc",
+        "--device=dri",
+        "--system-talk-name=org.freedesktop.NetworkManager",
+        "--filesystem=xdg-pictures/Screenshots",
+        "--filesystem=~/Pictures/Screenshots"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin",
+        "env": {
+            "CARGO_HOME": "/run/build/qr-from-screen/cargo",
+            "CARGO_NET_OFFLINE": "true"
+        }
+    },
+    "modules": [
+        {
+            "name": "qr-from-screen",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cargo --offline build --release --locked",
+                "install -Dm755 target/release/qr-from-screen -t /app/bin/",
+                "install -Dm644 data/io.github.etidona.QRFromScreen.desktop -t /app/share/applications/",
+                "install -Dm644 data/io.github.etidona.QRFromScreen.metainfo.xml -t /app/share/metainfo/",
+                "install -Dm644 data/icons/hicolor/scalable/apps/io.github.etidona.QRFromScreen.svg -t /app/share/icons/hicolor/scalable/apps/",
+                "install -Dm644 data/icons/hicolor/symbolic/apps/io.github.etidona.QRFromScreen-symbolic.svg -t /app/share/icons/hicolor/symbolic/apps/"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "..",
+                    "skip": [".git", ".flatpak-builder", "build-dir", "repo", "target"]
+                },
+                "cargo-sources.json"
+            ]
+        }
+    ]
+}
