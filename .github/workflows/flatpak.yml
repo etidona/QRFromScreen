@@ -1,0 +1,31 @@
+name: Flatpak
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  flatpak:
+    name: Flatpak (${{ matrix.variant.arch }})
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
+      options: --privileged
+    strategy:
+      fail-fast: false
+      matrix:
+        variant:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.variant.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: qr-from-screen-${{ matrix.variant.arch }}.flatpak
+          manifest-path: build-aux/io.github.etidona.QRFromScreen.json
+          arch: ${{ matrix.variant.arch }}
+          cache-key: flatpak-builder-${{ github.sha }}
