@@ -30,6 +30,20 @@ Nothing happens without your confirmation. If the screen shows more than one cod
 - `xdg-desktop-portal` with a backend that supports the Screenshot portal (for example `xdg-desktop-portal-gnome`, `-kde`, `-hyprland` or `-wlr`)
 - NetworkManager, only to connect to Wi-Fi networks
 
+## Install the Flatpak
+
+Download the package for your computer from the [latest release](https://github.com/etidona/QRFromScreen/releases/latest): `x86_64` for most PCs, `aarch64` for ARM computers such as Apple Silicon Macs running Asahi Linux. Then install it:
+
+```sh
+flatpak install --user qr-from-screen-0.1.0-x86_64.flatpak
+```
+
+Flatpak downloads the GNOME runtime from [Flathub](https://flathub.org/setup) if it is not installed yet. The app is not on Flathub itself, so updates are not automatic: install the package of each new release in the same way.
+
+To run it from a shortcut, use the command `flatpak run io.github.etidona.QRFromScreen`.
+
+The Flatpak can talk to NetworkManager, to connect to Wi-Fi networks, and can access the `Pictures/Screenshots` folder, to delete the screenshot it takes. If your desktop saves screenshots somewhere else, they are not deleted: allow that folder with `flatpak override --user --filesystem=<folder> io.github.etidona.QRFromScreen`.
+
 ## Build and install
 
 You need Rust 1.85 or later and the GTK 4 and libadwaita development packages (`gtk4-devel` and `libadwaita-devel` on Fedora; `libgtk-4-dev` and `libadwaita-1-dev` on Debian and Ubuntu).
@@ -49,7 +63,7 @@ install -Dm644 data/icons/hicolor/symbolic/apps/io.github.etidona.QRFromScreen-s
 
 ## Add a keyboard shortcut
 
-QR from Screen is meant to be run from a shortcut. Assign one to the `qr-from-screen` command in your desktop's keyboard settings. For niri, add this to the `binds` section of your configuration:
+QR from Screen is meant to be run from a shortcut. Assign one to the `qr-from-screen` command (or `flatpak run io.github.etidona.QRFromScreen` for the Flatpak) in your desktop's keyboard settings. For niri, add this to the `binds` section of your configuration:
 
 ```kdl
 Ctrl+Shift+Q hotkey-overlay-title="Scan QR Code from Screen" { spawn "qr-from-screen"; }
